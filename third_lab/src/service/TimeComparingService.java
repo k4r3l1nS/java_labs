@@ -14,6 +14,9 @@ public class TimeComparingService<T> {
     private final TestList<T> TEST_ARRAY_LIST;
     private final TestList<T> TEST_LINKED_LIST;
 
+    /**
+     * Количество тестов
+     */
     private static final int TIMES_TO_TEST = 50;
 
     public TimeComparingService(List<T> list) {

@@ -6,6 +6,14 @@ import static service.units.TimeUnit.averageTimeNanos;
 
 public class LoggerUnit {
 
+    /**
+     * Вычислить и вывести в консоль средние значения тестов
+     * и разницу между этими значениями
+     *
+     * @param arrayListTime Тесты пополняемого массива
+     * @param linkedListTime Тесты связного списка
+     * @param operationName Название тестируемой операции
+     */
     public static void log(
             Duration[] arrayListTime,
             Duration[] linkedListTime,
