@@ -31,7 +31,7 @@ public class TimeComparingService<T> {
             arrayListTime[i] = TEST_ARRAY_LIST.testGetOperationTime(index);
             linkedListTime[i] = TEST_LINKED_LIST.testGetOperationTime(index);
         }
-        log(arrayListTime, linkedListTime, "Получение элемента по индексу");
+        log(arrayListTime, linkedListTime, "Получение элемента по индексу", TIMES_TO_TEST);
     }
 
     public void compareAddOperation(T elem) {
@@ -41,7 +41,7 @@ public class TimeComparingService<T> {
             arrayListTime[i] = TEST_ARRAY_LIST.testAddOperationTime(elem);
             linkedListTime[i] = TEST_LINKED_LIST.testAddOperationTime(elem);
         }
-        log(arrayListTime, linkedListTime, "Добавление элемента в конец списка");
+        log(arrayListTime, linkedListTime, "Добавление элемента в конец списка", TIMES_TO_TEST);
     }
 
     public void compareAddOperation(T elem, int index) {
@@ -51,7 +51,7 @@ public class TimeComparingService<T> {
             arrayListTime[i] = TEST_ARRAY_LIST.testAddOperationTime(elem, index);
             linkedListTime[i] = TEST_LINKED_LIST.testAddOperationTime(elem, index);
         }
-        log(arrayListTime, linkedListTime, "Добавление элемента по индексу");
+        log(arrayListTime, linkedListTime, "Добавление элемента по индексу", TIMES_TO_TEST);
     }
 
     public void compareDeleteOperation(T elem) {
@@ -61,7 +61,7 @@ public class TimeComparingService<T> {
             arrayListTime[i] = TEST_ARRAY_LIST.testDeleteOperationTime(elem);
             linkedListTime[i] = TEST_LINKED_LIST.testDeleteOperationTime(elem);
         }
-        log(arrayListTime, linkedListTime, "Удаление элемента по значению");
+        log(arrayListTime, linkedListTime, "Удаление элемента по значению", TIMES_TO_TEST);
     }
 
     public void compareFindOperation(T elem) {
@@ -71,6 +71,6 @@ public class TimeComparingService<T> {
             arrayListTime[i] = TEST_ARRAY_LIST.testFindOperationTime(elem);
             linkedListTime[i] = TEST_LINKED_LIST.testFindOperationTime(elem);
         }
-        log(arrayListTime, linkedListTime, "Поиск элемента по значению");
+        log(arrayListTime, linkedListTime, "Поиск элемента по значению", TIMES_TO_TEST);
     }
 }
