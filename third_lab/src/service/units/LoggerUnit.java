@@ -30,7 +30,7 @@ public class LoggerUnit {
         System.out.println("Среднее время выполнения для связного списка: " + linkedListTimeMillis + " нс   " +
                 (arrayListIsFaster ? "×××" : "✓✓✓"));
         System.out.println("Разница [%]: " +
-                ((double) (arrayListIsFaster ? linkedListTimeMillis : arrayListTimeMillis)
+                ((arrayListIsFaster ? linkedListTimeMillis : arrayListTimeMillis)
                         / (arrayListIsFaster ? arrayListTimeMillis : linkedListTimeMillis) - 1) * 100
                 + "\n"
         );
