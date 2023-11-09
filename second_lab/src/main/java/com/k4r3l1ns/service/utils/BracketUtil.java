@@ -1,40 +1,81 @@
 package com.k4r3l1ns.service.utils;
 
+import com.k4r3l1ns.models.UnbalancedBracketsException;
+
 import java.util.*;
+
 public class BracketUtil {
 
-    static boolean areBracketsBalanced(String expr) {
-        Deque<Character> stack = new ArrayDeque<Character>();
-        // Traversing the Expression
-        for (int i = 0; i < expr.length(); i++) {
-            char x = expr.charAt(i);
-            if (x == '(' || x == '[' || x == '{') {
-                stack.push(x);
+    private static final Set<Character> OPENING_BRACKET_SYMBOLS = Set.of('(', '[', '{');
+    private static final Set<Character> CLOSING_BRACKET_SYMBOLS = Set.of(')', ']', '}');
+
+    /**
+     * Проверяет, сбалансированы ли скобки в выражении и выбрасывает
+     * исключение, если они не сбалансированы
+     *
+     * @param expression Выражение
+     */
+    public static void throwIfUnbalanced(String expression) {
+
+        Deque<Character> stack = new ArrayDeque<>();
+        var charStream = expression.toCharArray();
+
+        for (var currentCharacter : charStream) {
+
+            if (
+                    OPENING_BRACKET_SYMBOLS.contains(currentCharacter) ||
+                    !CLOSING_BRACKET_SYMBOLS.contains(currentCharacter)
+            ) {
+                if (OPENING_BRACKET_SYMBOLS.contains(currentCharacter)) {
+                    stack.push(currentCharacter);
+                }
                 continue;
             }
-            // If current character is not opening bracket, then it must be closing. So stack cannot be empty at this point.
-            if (stack.isEmpty())
-                return false;
-            char check;
-            switch (x) {
-                case ')':
-                    check = stack.pop();
-                    if (check == '{' || check == '[')
-                        return false;
-                    break;
-                case '}':
-                    check = stack.pop();
-                    if (check == '(' || check == '[')
-                        return false;
-                    break;
-                case ']':
-                    check = stack.pop();
-                    if (check == '(' || check == '{')
-                        return false;
-                    break;
+
+            if (stack.isEmpty() || !isCompatible(currentCharacter, stack.pop())) {
+                throw new UnbalancedBracketsException();
             }
         }
-        // Check Empty Stack
-        return (stack.isEmpty());
+
+        if (!stack.isEmpty()) {
+            throw new UnbalancedBracketsException();
+        }
+    }
+
+    /**
+     * Проверяет, соответствует ли закрывающая скобка открывающей
+     *
+     * @param bracketCharacter Закрывающая скобка
+     * @param stackTop Открывающая скобка
+     * @return Результат проверки
+     */
+    private static boolean isCompatible(Character bracketCharacter, Character stackTop) {
+
+        switch (bracketCharacter) {
+            case ')':
+                if (stackTop == '{' || stackTop == '[') {
+                    return false;
+                }
+                break;
+            case '}':
+                if (stackTop == '(' || stackTop == '[') {
+                    return false;
+                }
+                break;
+            case ']':
+                if (stackTop == '(' || stackTop == '{') {
+                    return false;
+                }
+                break;
+        }
+        return true;
+    }
+
+    public static boolean isOpeningBracket(Character bracketCharacter) {
+        return OPENING_BRACKET_SYMBOLS.contains(bracketCharacter);
+    }
+
+    public static boolean isClosingBracket(Character bracketCharacter) {
+        return CLOSING_BRACKET_SYMBOLS.contains(bracketCharacter);
     }
 }
