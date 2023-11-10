@@ -15,6 +15,12 @@ import java.util.*;
 public class ExpressionEvaluator {
     public static final int DECIMAL_SCALE = 10;
 
+    /**
+     * Вычисляет значение выражения
+     *
+     * @param expression Класс, содержащий выражение и map с переменными
+     * @return Значение выражения
+     */
     public static BigDecimal apply(Expression expression) {
 
         try {
@@ -87,6 +93,13 @@ public class ExpressionEvaluator {
         return null;
     }
 
+    /**
+     * Вычисляет значение выражения
+     *
+     * @param expression Класс, содержащий выражение и map с переменными
+     * @param scale Значение приближения "после запятой"
+     * @return Значение выражения
+     */
     public static BigDecimal apply(
             Expression expression,
             int scale
@@ -95,6 +108,14 @@ public class ExpressionEvaluator {
         return result == null ? null : result.setScale(scale, RoundingMode.HALF_EVEN);
     }
 
+    /**
+     * Вычисляет значение выражения
+     *
+     * @param expression Класс, содержащий выражение и map с переменными
+     * @param scale Значение приближения "после запятой"
+     * @param roundingMode Режим округления результата
+     * @return Значение выражения
+     */
     public static BigDecimal apply(
             Expression expression,
             int scale,

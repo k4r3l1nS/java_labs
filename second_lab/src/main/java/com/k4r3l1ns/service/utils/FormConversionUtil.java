@@ -6,8 +6,20 @@ import static com.k4r3l1ns.service.utils.BracketUtil.isClosingBracket;
 import static com.k4r3l1ns.service.utils.BracketUtil.isOpeningBracket;
 
 public class FormConversionUtil {
+
+    /**
+     * Поддерживаемые операторы
+     */
     public static final Set<Character> OPERATORS = Set.of('+', '-', '*', '/', '^');
+
+    /**
+     * Наивысший возможный приоритет операции
+     */
     private static final int MAX_PRIORITY = 4;
+
+    /**
+     * Map с приоритетами операций
+     */
     private static final Map<Character, Integer> PRIORITY_MAP = Map.of(
             '+', 1,
             '-', 1,
@@ -15,6 +27,13 @@ public class FormConversionUtil {
             '/', 2,
             '^', 3
     );
+
+    /**
+     * Переводит выражение из инфиксной формы в префиксную
+     *
+     * @param mathText Выражение
+     * @return Префиксная форма
+     */
     public static String expressionToPostfix(String mathText) {
 
         StringBuilder postfix = new StringBuilder();

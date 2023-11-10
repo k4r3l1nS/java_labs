@@ -14,7 +14,7 @@ public class BracketUtil {
      * Проверяет, сбалансированы ли скобки в выражении и выбрасывает
      * исключение, если они не сбалансированы
      *
-     * @param expression Выражение
+     * @param expression Класс, содержащий выражение и map с переменными
      */
     public static void throwIfUnbalanced(Expression expression) {
 

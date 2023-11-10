@@ -1,11 +1,15 @@
 package com.k4r3l1ns.service.designation;
 
 import com.k4r3l1ns.models.Expression;
-import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 public class VariableService {
 
+    /**
+     * Заменяет переменные на их значения
+     *
+     * @param expression Класс, содержащий выражение и map с переменными
+     * @return Текст преобразованного выражения
+     */
     public static String replaceVariables(Expression expression) {
 
         var mathText = expression.getMathText();
@@ -37,7 +41,6 @@ public class VariableService {
                                         || currentCharacter == '('))) {
                     result[0] = result[0].substring(0, index) + valueString +
                             result[0].substring(index + variableLength);
-                    // ++index;
                 }
             }
         });

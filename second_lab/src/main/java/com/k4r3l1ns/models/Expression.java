@@ -13,6 +13,9 @@ import java.util.function.Function;
 @AllArgsConstructor
 public class Expression {
 
+    /**
+     * Map с обозначениями стандартных функций и их математических имплементациями
+     */
     public static final Map<String, Function<Double, Double>> FUNCTION_MAP
             = Map.of(
             "sin", Math::sin,
@@ -27,13 +30,25 @@ public class Expression {
             "neg", x -> -x
     );
 
+    /**
+     * Текст выражения
+     */
     private String mathText;
+
+    /**
+     * Map с переменными и их значениями
+     */
     private Map<String, Double> variableMap = new HashMap<>();
 
     public Expression(String mathText) {
         this.mathText = mathText;
     }
 
+    /**
+     * Сканирует значения переменных из InputStream
+     *
+     * @param inputStream Поток ввода
+     */
     public void scanVariables(InputStream inputStream) {
 
         List<String> variables = detectVariables();
@@ -50,6 +65,11 @@ public class Expression {
         }
     }
 
+    /**
+     * Сканирует выражение из InputStream
+     *
+     * @param inputStream Поток ввода
+     */
     public void scanExpression(InputStream inputStream) {
 
         Scanner scanner = new Scanner(inputStream);
@@ -57,9 +77,14 @@ public class Expression {
         mathText = scanner.nextLine();
     }
 
+    /**
+     * Находит обозначения переменных
+     *
+     * @return Список обозначений
+     */
     public List<String> detectVariables() {
 
-        if (mathText == null) {
+        if (mathText == null || mathText.isEmpty()) {
             throw new NoExpressionFoundException();
         }
 
@@ -85,6 +110,11 @@ public class Expression {
         return variables;
     }
 
+    /**
+     * Проверка, содержатся ли переменные в выражении
+     *
+     * @return Результат проверки
+     */
     public boolean containsVariables() {
         return detectVariables().isEmpty();
     }
