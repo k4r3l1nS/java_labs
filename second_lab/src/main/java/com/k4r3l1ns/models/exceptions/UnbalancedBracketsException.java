@@ -1,4 +1,4 @@
-package com.k4r3l1ns.models;
+package com.k4r3l1ns.models.exceptions;
 
 public class UnbalancedBracketsException extends RuntimeException {
 

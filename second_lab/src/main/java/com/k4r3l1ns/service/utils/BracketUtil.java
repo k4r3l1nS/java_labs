@@ -1,6 +1,7 @@
 package com.k4r3l1ns.service.utils;
 
-import com.k4r3l1ns.models.UnbalancedBracketsException;
+import com.k4r3l1ns.models.Expression;
+import com.k4r3l1ns.models.exceptions.UnbalancedBracketsException;
 
 import java.util.*;
 
@@ -15,10 +16,11 @@ public class BracketUtil {
      *
      * @param expression Выражение
      */
-    public static void throwIfUnbalanced(String expression) {
+    public static void throwIfUnbalanced(Expression expression) {
 
+        var mathText = expression.getMathText();
         Deque<Character> stack = new ArrayDeque<>();
-        var charStream = expression.toCharArray();
+        var charStream = mathText.toCharArray();
 
         for (var currentCharacter : charStream) {
 
