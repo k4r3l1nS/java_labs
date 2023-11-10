@@ -6,7 +6,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public class SecondLabApplicationTests {
 
-
     @ParameterizedTest
     @ValueSource(strings = {
             "abs(4 + sin[cos(3)]) + 2.3 * exp(neg(2.7))",   // ✓✓✓
@@ -19,12 +18,6 @@ public class SecondLabApplicationTests {
     }) public void testApplyingExpression(String mathText) {
 
         Expression expression = new Expression(mathText);
-
-        // Альтернативный вариант - ввод с консоли
-        // Expression expression = new Expression();
-        // expression.scanExpression(DEFAULT_INPUT_STREAM);
-
-//        expression.scanVariables(System.in);
 
         var result = ExpressionEvaluator.apply(expression, 3);
         System.out.println(
