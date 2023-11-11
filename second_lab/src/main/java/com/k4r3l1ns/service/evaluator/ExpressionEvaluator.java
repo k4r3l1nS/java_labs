@@ -13,6 +13,7 @@ import java.util.*;
 
 @RequiredArgsConstructor
 public class ExpressionEvaluator {
+
     public static final int DECIMAL_SCALE = 10;
 
     /**
@@ -29,7 +30,7 @@ public class ExpressionEvaluator {
             String numericExpressionText = VariableService.replaceVariables(expression);
             String postfix = FormConversionUtil.expressionToPostfix(numericExpressionText);
 
-            if (expression.detectVariables().size() > expression.getVariableMap().size()) {
+            if (expression.getVariableMap().containsValue(null)) {
                 throw new UndetectedVariablesException();
             }
 

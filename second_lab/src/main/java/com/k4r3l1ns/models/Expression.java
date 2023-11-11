@@ -38,7 +38,16 @@ public class Expression {
     /**
      * Map с переменными и их значениями
      */
-    private Map<String, Double> variableMap = new HashMap<>();
+    private static final Map<String, Double> CONSTANT_MAP = Map.of(
+            "PI", Math.PI,
+            "E", Math.E,
+            "TAU", Math.TAU
+    );
+
+    /**
+     * Map с переменными и их значениями
+     */
+    private Map<String, Double> variableMap = new HashMap<>(CONSTANT_MAP);
 
     public Expression(String mathText) {
         this.mathText = mathText;
@@ -58,9 +67,11 @@ public class Expression {
             System.out.println("Переменных не обнаружено");
         } else {
             for (var variable : variables) {
-                System.out.println("Сканируем переменную " + variable + ":");
-                Double value = scanner.nextDouble();
-                variableMap.put(variable, value);
+                if (variableMap.get(variable) == null) {
+                    System.out.println("Сканируем переменную " + variable + ":");
+                    Double value = scanner.nextDouble();
+                    variableMap.put(variable, value);
+                }
             }
         }
     }

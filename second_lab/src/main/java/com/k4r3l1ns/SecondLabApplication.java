@@ -13,7 +13,7 @@ public class SecondLabApplication {
     public static void main(String[] args) {
 
         Expression expression =
-                new Expression("abs(4 + sin[cos(x1)]) + 2.3 * exp(neg(x2))");
+                new Expression("abs(4 + sin[cos(x1)]) + 2.3 * exp(PI * neg(x2))");
 
         // Альтернативный вариант - ввод выражения с консоли
         // Expression expression = new Expression();
