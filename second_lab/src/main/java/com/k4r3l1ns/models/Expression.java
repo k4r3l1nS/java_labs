@@ -36,7 +36,7 @@ public class Expression {
     private String mathText;
 
     /**
-     * Map с переменными и их значениями
+     * Map с константами
      */
     private static final Map<String, Double> CONSTANT_MAP = Map.of(
             "PI", Math.PI,
