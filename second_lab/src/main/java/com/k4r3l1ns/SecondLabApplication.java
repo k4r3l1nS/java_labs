@@ -3,7 +3,6 @@ package com.k4r3l1ns;
 import com.k4r3l1ns.models.Expression;
 import com.k4r3l1ns.service.designation.VariableService;
 import com.k4r3l1ns.service.evaluator.ExpressionEvaluator;
-import com.k4r3l1ns.service.utils.FormConversionUtil;
 
 import java.io.InputStream;
 
