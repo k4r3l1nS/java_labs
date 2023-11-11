@@ -25,8 +25,8 @@ public class SecondLabApplicationTests {
 
         var result = ExpressionEvaluator.apply(expression, DECIMAL_SCALE);
         System.out.println(
-                "\n\n\nРезультат вычислений: " + VariableService.replaceVariables(expression)
-                        + " = " + (result == null ? "-E-" : result)
+                "\nРезультат вычислений: " + VariableService.replaceVariables(expression)
+                        + " = " + (result == null ? "-E-" : result) + "\n\n\n"
         );
     }
 
